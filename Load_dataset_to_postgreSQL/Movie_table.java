@@ -47,8 +47,7 @@ public class Movie_table {
 		+ "Genre_name TEXT,"+"FOREIGN KEY(MovieGenre_ID) references MOVIE(Movie_ID))";
 		
 		try {
-			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Practise", "postgres", "password");
-		//c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+Acted_in.dbName, "postgres", Acted_in.password);
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbname", "postgres", "password");
 
 			preparedStatement = c.prepareStatement(Create_table_Movie);
 			//preparedStatementGenre = c.prepareStatement(Create_table_Genre);
@@ -66,7 +65,6 @@ public class Movie_table {
 		}
 		System.out.println("Opened database successfully");
 
-		//String filename = "C:\\Users\\13155\\Desktop\\Chaitanya\\Sem2\\BigData\\title.basics.tsv.gz\\";
 		String filename = "title.basics.tsv.gz";
 		BufferedReader br = null;
 
@@ -79,7 +77,6 @@ public class Movie_table {
 			preparedStatement = c.prepareStatement(
 					"INSERT INTO MOVIE (Movie_ID,Movie_Name,Rating,No_of_Votes) " + "VALUES (?,?,?,?);");
 			
-			//preparedStatementGenre = c.prepareStatement("INSERT INTO Genre (Genre_ID, Genre_type_one,Genre_type_two,Genre_type_three) " + "VALUES (?,?,?,?);");
 		
 			preparedStatementHas_Genre = c.prepareStatement("INSERT INTO Has_Genre (MovieGenre_ID, Genre_name) " + "VALUES (?,?);");
 			
