@@ -13,7 +13,10 @@ public class Normalize {
 
 	String[] Store;
 	String[] temp;
-
+	
+	/*
+	Generate all combinations of columns in the table
+	*/
 	public static String[] Generate_combinations(String[] store) throws SQLException {
 
 		ArrayList<String> FD = new ArrayList<>();
@@ -27,19 +30,18 @@ public class Normalize {
 			// System.out.println("------------------------");
 			for (int j = 0; j < store.length; j++) {
 				int index = 0;
-				// String Temp[] = new String[j+1-i];
-
+				
 				if ((i & (1 << j)) > 0) {
 
-					// System.out.print(store[j]+" ");
+					
 					Temp.add(store[j]);
 					index += 1;
 				}
 
-			}
-			// System.out.println("");
-			// System.out.println("------------------------");
-
+			}		
+		/*
+			Pruning Step
+		*/
 			if (Temp.size() > 1) {
 				// This is the modification
 				if (Temp.size() <= 3) {
@@ -105,10 +107,14 @@ public class Normalize {
 
 		return store;
 	}
-
+	
+	
+	/*
+	This method finds all the Functional dependencies in the table
+	*/
 	public static boolean Functional_dep_checker(ArrayList<String> temp2) throws SQLException {
 		Connection c = null;
-		//c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/prac", "postgres", "");
+
 		c = DriverManager.getConnection("jdbc:postgresql://localhost:"+index_q3.port+"/"+index_q3.dbName, "postgres", index_q3.password);
 
 		PreparedStatement preparedStatementSelect = null;
@@ -191,11 +197,6 @@ public class Normalize {
 
 		ResultSet rs = preparedStatementSelect.executeQuery();
 
-		/*
-		 * Integer Movie_id = null; String Movie_type = null ; String Movie_start_year =
-		 * null; String movie_runtime = null; float movie_rating = 0 ; String birthyear
-		 * = null; String role_played = null ; String genre = null;
-		 */
 
 		String store[] = new String[10];
 		String prac[] = { "A", "B", "C", "D" };
