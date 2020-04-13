@@ -33,21 +33,10 @@ public class Acted_in {
 		//String filename = "C:\\Users\\13155\\Desktop\\Chaitanya\\Sem2\\BigData\\title.principals.tsv.gz";
 		String filename = "title.principals.tsv.gz";
 		
-		
-		//if (args.length > 0) {
-		  //  try {
-		    	
-		    //    dbName = args[0];
-		      //  password = args[1];
-		        
-		    //} catch (NumberFormatException e) {
-		   // 	System.out.println("Please enter dbname and password");
-		   //     System.exit(1);
-		   // }
+	
 		
 		br = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(filename))));
-		// br = new BufferedReader(new InputStreamReader(new
-		// FileInputStream(filename)));
+		
 
 		int count = 0;
 		HashMap<Integer, Integer> Movie_Map_store = new HashMap<>();
@@ -72,10 +61,7 @@ public class Acted_in {
 		PreparedStatement preparedStatementDirect = null;
 		PreparedStatement preparedStatementProduce = null;
 
-		c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Practise", "postgres", "password");
-
-
-		//c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+dbName, "postgres", password);
+		c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/db_name", "postgres", "password");
 
 		String Create_table_Acted_in = "CREATE TABLE  Acted_in " + "(MovieActed_ID INT ,"
 
@@ -90,13 +76,7 @@ public class Acted_in {
 		preparedStatementActed_in.execute();
 		preparedStatementActed_in = c.prepareStatement("INSERT INTO Acted_in(MovieActed_ID, Name_ID) values (?,?);");
 
-		// preparedStatementActed_in = c.prepareStatement("INSERT INTO
-		// Acted_in(MovieActed_ID, Name_ID)"+
-		// "SELECT Movie.Movie_ID, member.member_ID FROM Movie, member WHERE
-		// Movie.Movie_ID=? and member.member_ID=?");
-
-		// “INSERT IGNORE INTO X(a, b) SELECT A.id, B.id FROM A, B WHERE A.id=? AND
-		// B.id=?
+		
 		/*
 		 * The writer table
 		 */
@@ -113,11 +93,7 @@ public class Acted_in {
 
 		preparedStatementWrite = c.prepareStatement("INSERT INTO Write(written_id, Name_ID) values (?,?);");
 
-		// preparedStatementWrite = c.prepareStatement("INSERT INTO Write(MovieActed_ID,
-		// Name_ID)"+
-		// "SELECT Movie.Movie_ID, member.member_ID FROM Movie, member WHERE
-		// Movie.Movie_ID=? and member.member_ID=?");
-		/*
+		
 		 * The producer table
 		 */
 		String create_table_Produce = "CREATE TABLE produce " + "( producer_id  INT ,"
@@ -133,11 +109,6 @@ public class Acted_in {
 		preparedStatementProduce.execute();
 		preparedStatementProduce = c.prepareStatement("INSERT INTO produce(producer_id, Name_ID) values (?,?); ");
 
-		// preparedStatementProduce = c.prepareStatement("INSERT INTO
-		// produce(MovieActed_ID, Name_ID)"+
-		// "SELECT Movie.Movie_ID, member.member_ID FROM Movie, member WHERE
-		// Movie.Movie_ID=? and member.member_ID=? ");
-		// + "ON CONFLICT (Movie.Movie_ID,member.member_ID) DO NOTHING;");
 		/*
 		 * Director table
 		 */
@@ -153,11 +124,7 @@ public class Acted_in {
 
 		preparedStatementDirect.execute();
 		preparedStatementDirect = c.prepareStatement("INSERT INTO direct(directed_id, Name_ID) values (?,?); ");
-		// preparedStatementDirect = c.prepareStatement("INSERT INTO
-		// direct(MovieActed_ID, Name_ID)"+
-		// "SELECT Movie.Movie_ID, member.member_ID FROM Movie, member WHERE
-		// Movie.Movie_ID=? and member.member_ID=?");
-		// + " ON CONFLICT (Movie.Movie_ID,member.member_ID) DO NOTHING;");
+		
 
 		int countA = 0;
 		int countD = 0;
