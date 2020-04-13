@@ -52,9 +52,7 @@ public class index_q3 {
 		setConnection();
 		
 		
-		System.out.println("------------------------------------------");
-		System.out.println("Question 3");
-		System.out.println("------------------------------------------");
+	
 		Normalize.main(args);
 		
 	}
