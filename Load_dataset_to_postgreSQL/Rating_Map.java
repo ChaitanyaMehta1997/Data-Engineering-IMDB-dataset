@@ -24,7 +24,6 @@ public class Rating_Map {
 	public static void main(String args[]) throws FileNotFoundException, IOException {
 
 		BufferedReader br = null;
-		//String filename = "C:\\Users\\13155\\Desktop\\Chaitanya\\Sem2\\BigData\\title.ratings.tsv.gz\\";
 		String filename = "title.ratings.tsv.gz";
 
 		br = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(filename))));
