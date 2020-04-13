@@ -64,8 +64,7 @@ public class Cast_table {
 		
 		String Create_table_Genre = "CREATE TABLE  member " + "(member_ID INT PRIMARY KEY     NOT NULL,"
 				+ " member_name TEXT )";
-		//String Create_table_Cast = "CREATE TABLE member " + "(Name_ID INT PRIMARY KEY     NOT NULL,"
-			//	+ " Cast_Name           TEXT   ) "; 
+		
 		try {
 		preparedStatementCast = c.prepareStatement(Create_table_Genre);
 		
